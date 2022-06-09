@@ -14,14 +14,14 @@ interface BPMService {
     fun actionCreate(actionCreateDTO: ActionCreateDTO)
     fun applicationCreate(applicationCreateDTO: ApplicationCreateDTO)
     fun getAllActions(token: String) : List<Action>
-    fun getAllUserApplications(userId: ObjectId, token: String) : List<Application>
+    fun getAllUserApplications(userId: String, token: String) : List<Application>
     fun changeStatusAndCounter(changeApplicationDTO: ChangeApplicationDTO)
 }
 
 @Service
 class ActionServiceImpl(
-    val actionRepository: ActionRepository,
-    val applicationRepository: ApplicationRepository
+    private val actionRepository: ActionRepository,
+    private val applicationRepository: ApplicationRepository
 ) : BPMService {
     override fun actionCreate(actionCreateDTO: ActionCreateDTO) {
         actionRepository.save(Action(
@@ -45,7 +45,7 @@ class ActionServiceImpl(
 
     override fun getAllActions(token: String) : List<Action> = actionRepository.getAllByCompanyToken(token)
 
-    override fun getAllUserApplications(userId: ObjectId, token: String) : List<Application> = applicationRepository.getAllByUserApplicantIdAndCompanyToken(userId, token)
+    override fun getAllUserApplications(userId: String, token: String) : List<Application> = applicationRepository.getAllByUserApplicantIdAndCompanyToken(userId, token)
 
     override fun changeStatusAndCounter(changeApplicationDTO: ChangeApplicationDTO) {
         applicationRepository.save(changeApplicationDTO.changedApplication)

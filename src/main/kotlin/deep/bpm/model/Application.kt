@@ -6,12 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "APPLICATION")
 class Application (
-    var userApplicantId: ObjectId,
+    var userApplicantId: String,
     var action: Action,
     var stepCounter: Int,
     var status: String,
     var companyToken: String
 ) {
     @Id
-    var id: ObjectId = ObjectId.get()
+    var id: String = ObjectId.get().toString()
 }

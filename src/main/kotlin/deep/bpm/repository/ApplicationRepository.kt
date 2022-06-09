@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ApplicationRepository : MongoRepository<Application, Int> {
-    fun getAllByUserApplicantIdAndCompanyToken(userApplicantId: ObjectId, companyToken: String) : List<Application>
+    fun getAllByUserApplicantIdAndCompanyToken(userApplicantId: String, companyToken: String) : List<Application>
 }

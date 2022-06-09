@@ -4,7 +4,7 @@ import deep.bpm.model.Action
 import org.bson.types.ObjectId
 
 class ApplicationCreateDTO (
-    var userApplicantId: ObjectId,
+    var userApplicantId: String,
     var action: Action,
     var stepCounter: Int,
     var status: String,

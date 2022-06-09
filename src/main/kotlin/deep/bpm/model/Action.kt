@@ -13,5 +13,5 @@ class Action(
     var companyToken: String
 ) {
     @Id
-    var id: ObjectId = ObjectId.get()
+    var id: String = ObjectId.get().toString()
 }
